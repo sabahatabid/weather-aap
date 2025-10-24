@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Live Weather App</title>
+
+  <!-- 🌈 Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 🌤 Custom Styles -->
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #3b82f6, #9333ea);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .fade-in {
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="glass rounded-3xl shadow-2xl p-8 w-96 text-white fade-in">
+    <h1 class="text-3xl font-bold text-center mb-6">🌦 Live Weather App</h1>
+
+    <div class="flex gap-2 mb-4">
+      <input id="cityInput"
+        class="flex-grow rounded-lg p-3 text-black focus:outline-none"
+        placeholder="Enter city (e.g. Karachi)" />
+      <button id="fetchBtn"
+        class="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-4 py-2 rounded-lg transition">
+        Search
+      </button>
+    </div>
+
+    <div id="weatherDisplay"
+      class="bg-white/10 rounded-lg p-4 text-sm fade-in min-h-[120px] text-center">
+      <p class="text-gray-200">Enter a city name to get weather info.</p>
+    </div>
+
+    <p class="text-xs text-gray-300 text-center mt-4">
+      🔄 Auto-refresh every <span id="intervalSeconds">60</span> seconds.
+    </p>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
+
